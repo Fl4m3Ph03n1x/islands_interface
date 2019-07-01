@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <h2><%= gettext "Welcome to %{name}", name: "Islands!" %>></h2>
+  <p class="lead">
+    A demo game built with Elixir and Phoenix, in a functional way!
+  </p>
+  <p>
+    <%= form_tag("/test") do
+      [
+        tag(:input, type: "text", name: "name"),
+        tag(:input, type: "submit", value: "New Game")
+      ]
+    end%>
+  </p>
+</div>
