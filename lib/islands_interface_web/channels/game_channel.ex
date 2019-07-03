@@ -7,4 +7,14 @@ defmodule IslandsInterfaceWeb.GameChannel do
   def join("game:" <> _player, _payload, socket) do
     {:ok, socket}
   end
+
+  # def handle_in("hello", payload, socket) do
+  #   {:reply, {:ok, payload}, socket}
+  # end
+
+  def handle_in("hello", payload, socket) do
+    broadcast! socket, "said_hello", payload
+    {:noreply, socket}
+  end
 end
+

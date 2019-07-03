@@ -86,4 +86,32 @@ function join(channel){
 
 join(game_channel);
 
+game_channel.on("said_hello", response => {
+    console.log("Returned Greeting:", response.message);
+})
+
+function say_hello(channel, greeting){
+    channel.push("hello", {"message": greeting})
+        .receive("ok", response => {
+            console.log("Hello", response.message);
+        })
+        .receive("error", response => {
+            console.log("Unable to say hello to the channel.", response.message);
+        })
+}
+
+say_hello(game_channel, "World!");
+
+// function leave(channel) {
+//     channel.leave()
+//         .receive("ok", response => {
+//             console.log("Left successfully!", response);
+//         })
+//         .receive("error", response => {
+//             console.log("Unable to leave.", response);
+//         })
+// } 
+
+// leave(game_channel);
+
 export default socket
